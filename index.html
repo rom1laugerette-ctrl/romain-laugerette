@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Romain Laugerette — Business Development</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0a0a0a;
-    --white: #f8f6f2;
-    --accent: #1a56db;
-    --accent2: #60a5fa;
-    --mid: #6b6b6b;
-    --light: #ededea;
+    --black: #060b18;
+    --white: #f0f4ff;
+    --accent: #0066ff;
+    --accent2: #00d4ff;
+    --accent3: #7b2fff;
+    --mid: #7a8aa0;
+    --light: #e4eaf8;
     --card: #ffffff;
   }
 
@@ -21,7 +22,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     background: var(--white);
     color: var(--black);
     overflow-x: hidden;
@@ -32,13 +33,13 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.2rem 4rem;
-    background: rgba(248,246,242,0.88);
+    background: rgba(240,244,255,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
   .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
     letter-spacing: -0.02em;
   }
   .nav-logo span { color: var(--accent); }
@@ -63,28 +64,44 @@
   }
   .hero-tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--light); border-radius: 2rem;
+    background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,212,255,0.1));
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 2rem;
     padding: 0.4rem 1rem; font-size: 0.78rem;
     font-weight: 500; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--mid);
+    text-transform: uppercase; color: var(--accent2);
     margin-bottom: 2rem;
     opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
   }
   .hero-tag::before {
     content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: block;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+    display: block;
   }
   h1 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 800; line-height: 1.0;
-    letter-spacing: -0.03em;
+    font-weight: 700; line-height: 1.0;
+    letter-spacing: -0.04em;
     opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
   }
-  h1 em { font-style: normal; color: var(--accent); }
+  h1 em { 
+    font-style: normal; 
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; letter-spacing: -0.03em;
+    line-height: 1.1; margin-bottom: 3rem;
+  }
   .hero-subtitle {
     margin-top: 1.5rem;
-    font-size: 1.1rem; font-weight: 300;
+    font-size: 1.05rem; font-weight: 400;
     color: var(--mid); line-height: 1.7; max-width: 480px;
     opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
   }
@@ -93,13 +110,13 @@
     opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
   }
   .btn-primary {
-    background: var(--accent); color: white;
+    background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white;
     padding: 0.85rem 2rem; border-radius: 0.4rem;
-    text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    text-decoration: none; font-weight: 600; font-size: 0.9rem;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(26,86,219,0.3);
+    box-shadow: 0 4px 24px rgba(0,102,255,0.35);
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,86,219,0.4); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,255,0.45); }
   .btn-secondary {
     background: transparent; color: var(--black);
     padding: 0.85rem 2rem; border-radius: 0.4rem;
@@ -127,7 +144,7 @@
     position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
     border-radius: 1.6rem;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    z-index: -1; opacity: 0.15;
+    z-index: -1; opacity: 0.25;
   }
   .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .stat {
@@ -135,7 +152,7 @@
     background: var(--light); border-radius: 1rem;
   }
   .stat-num {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2rem; font-weight: 800;
     color: var(--accent);
   }
@@ -148,7 +165,7 @@
   .deco-circle {
     position: absolute; border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    opacity: 0.07; z-index: -1;
+    opacity: 0.08; z-index: -1;
   }
   .deco-1 { width: 500px; height: 500px; top: -100px; right: -100px; }
   .deco-2 { width: 200px; height: 200px; bottom: 10%; left: 5%; }
@@ -157,11 +174,14 @@
   section { padding: 6rem 4rem; }
   .section-label {
     font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent);
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
   }
   .section-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800; letter-spacing: -0.02em;
     line-height: 1.1; margin-bottom: 3rem;
@@ -179,7 +199,7 @@
     padding: 1.3rem 1.5rem;
     background: rgba(255,255,255,0.04);
     border-radius: 0.8rem;
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid var(--accent2);
   }
   .highlight-icon { font-size: 1.5rem; }
   .highlight-text { font-size: 0.9rem; line-height: 1.5; color: rgba(255,255,255,0.75); }
@@ -192,10 +212,7 @@
     display: grid; grid-template-columns: 200px 1fr;
     gap: 3rem; padding: 2.5rem 0;
     border-bottom: 1px solid var(--light);
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.5s, transform 0.5s;
   }
-  .exp-item.visible { opacity: 1; transform: none; }
   .exp-date { font-size: 0.85rem; color: var(--mid); padding-top: 0.2rem; }
   .exp-date span {
     display: inline-block; background: var(--light);
@@ -203,10 +220,15 @@
     font-size: 0.75rem; margin-bottom: 0.5rem;
   }
   .exp-company {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem;
   }
-  .exp-role { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.8rem; }
+  .exp-role { 
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 0.9rem; font-weight: 600; margin-bottom: 0.8rem; 
+  }
   .exp-desc { font-size: 0.92rem; color: var(--mid); line-height: 1.7; }
   .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
   .tag {
@@ -226,7 +248,7 @@
   .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
   .skill-card-icon { font-size: 2rem; margin-bottom: 1rem; }
   .skill-card-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem;
   }
   .skill-items { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -234,7 +256,7 @@
     font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 2rem;
     background: var(--light); color: var(--mid);
   }
-  .skill-pill.accent { background: rgba(232,65,10,0.1); color: var(--accent); }
+  .skill-pill.accent { background: linear-gradient(135deg, rgba(0,102,255,0.12), rgba(0,212,255,0.12)); color: var(--accent); }
 
   /* CONTACT */
   #contact { background: var(--black); color: white; }
@@ -327,7 +349,7 @@
     <div class="hero-tag">Business Development · Sales Management</div>
     <h1>Romain<br><em>Laugerette</em></h1>
     <p class="hero-subtitle">
-      Expert en <strong>développement commercial</strong> et management des ventes — 15+ ans à construire, structurer et scaler des équipes et des marchés.
+      Expert en <strong>développement commercial</strong> et en management des ventes, avec plus de 15 ans d'expérience dans la construction et la structuration d'équipes, le développement de marchés, la gestion de clients grands comptes et la mise en place de partenariats stratégiques.
     </p>
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary">Me contacter</a>
@@ -339,7 +361,7 @@
     <div class="hero-card">
       <div class="stat-grid">
         <div class="stat">
-          <div class="stat-num">15+</div>
+          <div class="stat-num">+15</div>
           <div class="stat-label">Années d'expérience</div>
         </div>
         <div class="stat">
@@ -357,8 +379,7 @@
       </div>
       <div class="hero-divider"></div>
       <div class="hero-card-footer">
-        <strong>Basé à Lisbonne</strong>, relocalisations envisagées à<br>
-        <strong>Montpellier</strong> ou <strong>Lyon</strong> · Disponible dès juin 2026
+        Mobilité vers <strong>Montpellier</strong> ou <strong>Lyon</strong> · Disponible dès juin 2026
       </div>
     </div>
   </div>
@@ -369,11 +390,11 @@
   <div class="section-label">À propos</div>
   <div class="about-grid">
     <div>
-      <h2 class="section-title" style="color:white">Un profil qui<br>va au-delà du CV.</h2>
+      <h2 class="section-title" style="color:white">Une approche terrain,<br>des résultats concrets.</h2>
       <p class="about-text">
-        Après deux aventures entrepreneuriales et plusieurs années à diriger des équipes commerciales dans des environnements exigeants, j'ai une conviction : <strong>ce qui fait la différence, c'est la capacité à transformer une vision en résultats concrets.</strong>
+        +15 ans d'expérience entre l'entrepreneuriat et la direction commerciale m'ont appris une chose essentielle : <strong>les résultats ne se décrètent pas, ils se construisent avec les bonnes personnes, les bons process et une vision claire.</strong>
         <br><br>
-        J'ai fondé, développé et cédé deux sociétés. Aujourd'hui, je mets cette énergie au service de structures qui ont déjà les ressources pour aller loin — et qui cherchent quelqu'un pour accélérer.
+        Entrepreneur à l'origine, j'ai ensuite dirigé une équipe commerciale dans une solution SIRH SaaS. Ce parcours hybride me permet d'allier vision business et efficacité commerciale, en comprenant les enjeux des dirigeants tout en sachant convaincre et closer.
       </p>
     </div>
     <div class="about-highlights">
@@ -412,75 +433,167 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label">Parcours</div>
-  <h2 class="section-title">Expériences<br>professionnelles</h2>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; flex-wrap:wrap; gap:1rem;">
+    <h2 class="section-title" style="margin-bottom:0">Expériences<br>professionnelles</h2>
+    <p style="color:var(--mid); font-size:0.9rem; max-width:320px; line-height:1.6;">15+ ans d'expérience entre entrepreneuriat, management et développement commercial B2B.</p>
+  </div>
   <div class="exp-list">
 
     <div class="exp-item">
       <div class="exp-date">
-        <span>2021 — 2026</span><br>Directeur Commercial
+        <span>2021 — 2026</span>
+        <div style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <div style="font-size:0.75rem;color:var(--mid);">📍 Remote · Lisbonne</div>
+          <div style="font-size:0.75rem;color:var(--mid);">🏢 SaaS · SIRH</div>
+        </div>
       </div>
       <div>
-        <div class="exp-company">KAMMI by Kéméo</div>
-        <div class="exp-role">Directeur Commercial · Solution SIRH</div>
-        <div class="exp-desc">Pilotage de la stratégie commerciale d'une solution SIRH SaaS. Management de l'équipe de vente, structuration du pipeline, développement du portefeuille clients et gestion de la relation grands comptes.</div>
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+          <div class="exp-company">KAMMI by Kéméo</div>
+          <span style="background:rgba(0,102,255,0.1);color:var(--accent);font-size:0.72rem;font-weight:600;padding:0.25rem 0.8rem;border-radius:2rem;">Poste le plus récent</span>
+        </div>
+        <div class="exp-role">Directeur Commercial</div>
+        <div class="exp-desc" style="margin-bottom:1.2rem;">Direction commerciale complète d'une solution SIRH SaaS à destination des TPE/PME et ETI, sur un périmètre de 1,5M€ de CA. Gérant de la succursale de Lisbonne. Recrutement et management d'une équipe mixte constituée de zéro : 1 commercial et 4 consultants. Structuration des process de vente et optimisation du CRM (HubSpot & Pipedrive). Développement multicanal : salons professionnels, inbound et partenariats revendeurs. 300 nouveaux clients signés sur la période pour une croissance du CA de +50%.</div>
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:0.8rem; margin-bottom:1.2rem;">
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">300</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Nouveaux clients</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">+50%</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Croissance CA</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">1,5M€</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">CA géré</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">5</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">1 commercial + 4 consultants</div>
+          </div>
+        </div>
         <div class="exp-tags">
-          <span class="tag">SaaS</span><span class="tag">SIRH</span><span class="tag">Management</span><span class="tag">B2B</span><span class="tag">HubSpot</span>
+          <span class="tag">Stratégie commerciale</span><span class="tag">Recrutement</span><span class="tag">SaaS</span><span class="tag">SIRH</span><span class="tag">HubSpot</span><span class="tag">Pipedrive</span><span class="tag">Inbound</span><span class="tag">Partenariats</span><span class="tag">Salons</span><span class="tag">Gérant succursale</span><span class="tag">Lisbonne</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-date">
-        <span>2018 — 2021</span><br>Fondateur
+        <span>2018 — 2021</span>
+        <div style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <div style="font-size:0.75rem;color:var(--mid);">📍 Lisbonne</div>
+          <div style="font-size:0.75rem;color:var(--mid);">🏢 Franchise · CBD</div>
+        </div>
       </div>
       <div>
-        <div class="exp-company">Green Swallow CBD</div>
-        <div class="exp-role">Fondateur · Réseau de franchise CBD</div>
-        <div class="exp-desc">Création et développement d'un réseau de franchise dans le secteur du CBD. Structuration du concept, recrutement des franchisés, accompagnement opérationnel et commercial. Cession réussie de la société.</div>
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+          <div class="exp-company">Green Swallow CBD</div>
+          <span style="background:rgba(16,185,129,0.1);color:#059669;font-size:0.72rem;font-weight:600;padding:0.25rem 0.8rem;border-radius:2rem;">✓ Cession réussie</span>
+        </div>
+        <div class="exp-role">Fondateur & Dirigeant</div>
+        <div class="exp-desc" style="margin-bottom:1.2rem;">Création de zéro d'un réseau de franchise dans le secteur CBD en pleine émergence. Conception du concept commercial, développement de la marque, recrutement et accompagnement des franchisés sur le terrain. Déploiement de plus de 10 points de vente au Portugal. Cession de la société après 3 ans de développement.</div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:0.8rem; margin-bottom:1.2rem;">
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">10+</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Points de vente</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">3 ans</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">De création à cession</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">Exit</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Cession réussie</div>
+          </div>
+        </div>
         <div class="exp-tags">
-          <span class="tag">Franchise</span><span class="tag">Retail</span><span class="tag">Création d'entreprise</span><span class="tag">Cession</span>
+          <span class="tag">Franchise</span><span class="tag">Création d'entreprise</span><span class="tag">Retail</span><span class="tag">Recrutement</span><span class="tag">Réseau</span><span class="tag">Cession</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-date">
-        <span>2012 — 2018</span><br>Fondateur
+        <span>2012 — 2018</span>
+        <div style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <div style="font-size:0.75rem;color:var(--mid);">📍 Antananarivo</div>
+          <div style="font-size:0.75rem;color:var(--mid);">🏢 BPO · Services</div>
+        </div>
       </div>
       <div>
-        <div class="exp-company">Eufonie</div>
-        <div class="exp-role">Fondateur · 6 ans d'entrepreneuriat</div>
-        <div class="exp-desc">Fondation et développement de la société Eufonie sur 6 ans, jusqu'à la cession. Gestion complète : développement commercial, management, relation clients et partenaires.</div>
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+          <div class="exp-company">Eufonie</div>
+          <span style="background:rgba(16,185,129,0.1);color:#059669;font-size:0.72rem;font-weight:600;padding:0.25rem 0.8rem;border-radius:2rem;">✓ Cession réussie</span>
+        </div>
+        <div class="exp-role">Fondateur & Dirigeant</div>
+        <div class="exp-desc" style="margin-bottom:1.2rem;">Première aventure entrepreneuriale dans le secteur BPO (Business Process Outsourcing), menée sur 6 ans avec 3 associés. Construction intégrale de la société : stratégie, développement commercial, management des équipes, pilotage opérationnel et relation clients/partenaires. Société cédée après avoir atteint sa maturité.</div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:0.8rem; margin-bottom:1.2rem;">
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">6 ans</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">D'entrepreneuriat</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">BPO</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Secteur services</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">Exit</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Cession réussie</div>
+          </div>
+        </div>
         <div class="exp-tags">
-          <span class="tag">Entrepreneuriat</span><span class="tag">Gestion</span><span class="tag">Cession</span>
+          <span class="tag">BPO</span><span class="tag">Entrepreneuriat</span><span class="tag">Développement commercial</span><span class="tag">Management</span><span class="tag">Cession</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-date">
-        <span>2006 — 2012</span><br>Manager
+        <span>2006 — 2012</span>
+        <div style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <div style="font-size:0.75rem;color:var(--mid);">📍 Paris</div>
+          <div style="font-size:0.75rem;color:var(--mid);">🏢 Tech · Scale-up</div>
+        </div>
       </div>
       <div>
         <div class="exp-company">Meetic</div>
         <div class="exp-role">Offshore Provider Manager</div>
-        <div class="exp-desc">Gestion des prestataires offshore pour l'un des leaders européens de la rencontre en ligne. Pilotage de la performance, coordination des équipes externalisées et suivi des KPIs opérationnels.</div>
+        <div class="exp-desc" style="margin-bottom:1.2rem;">Management des prestataires offshore pour l'un des leaders européens de la rencontre en ligne. Coordination d'une équipe de 10 à 20 personnes externalisées, dans un contexte multiculturel et international. Pilotage de la performance via des KPIs rigoureux et optimisation continue des process opérationnels au sein d'un environnement scale-up en forte croissance.</div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:0.8rem; margin-bottom:1.2rem;">
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">15+</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Personnes managées</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">6 ans</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Dans la scale-up</div>
+          </div>
+          <div style="background:var(--light);border-radius:0.8rem;padding:1rem;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">🌍</div>
+            <div style="font-size:0.72rem;color:var(--mid);margin-top:0.2rem;">Management international</div>
+          </div>
+        </div>
         <div class="exp-tags">
-          <span class="tag">Gestion prestataires</span><span class="tag">KPIs</span><span class="tag">Offshore</span><span class="tag">Scale-up</span>
+          <span class="tag">Management offshore</span><span class="tag">International</span><span class="tag">KPIs</span><span class="tag">Process</span><span class="tag">Scale-up</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-date">
-        <span>2004 — 2006</span><br>Commercial
+        <span>2004 — 2006</span>
+        <div style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <div style="font-size:0.75rem;color:var(--mid);">📍 Paris</div>
+          <div style="font-size:0.75rem;color:var(--mid);">🏢 Immobilier</div>
+        </div>
       </div>
       <div>
         <div class="exp-company">Avéa Immobilier</div>
         <div class="exp-role">Agent Immobilier</div>
-        <div class="exp-desc">Négociation et vente de biens immobiliers, gestion du portefeuille clients, prospection et accompagnement acheteurs/vendeurs tout au long du processus de transaction.</div>
+        <div class="exp-desc" style="margin-bottom:1.2rem;">Premiers pas dans la vente et la négociation commerciale. Prospection active, gestion d'un portefeuille clients acheteurs/vendeurs, conduite des négociations et accompagnement complet jusqu'à la signature. Fondations solides en vente consultative et relation client.</div>
         <div class="exp-tags">
-          <span class="tag">Vente</span><span class="tag">Négociation</span><span class="tag">Immobilier</span>
+          <span class="tag">Vente</span><span class="tag">Négociation</span><span class="tag">Prospection</span><span class="tag">Relation client</span>
         </div>
       </div>
     </div>
@@ -521,6 +634,11 @@
       <div class="skill-items">
         <span class="skill-pill accent">HubSpot</span>
         <span class="skill-pill accent">Pipedrive</span>
+        <span class="skill-pill accent">ClickUp</span>
+        <span class="skill-pill accent">Zendesk</span>
+        <span class="skill-pill accent">Aircall</span>
+        <span class="skill-pill">Claude AI</span>
+        <span class="skill-pill">Gemini</span>
         <span class="skill-pill">Analyse KPIs</span>
         <span class="skill-pill">CRM</span>
         <span class="skill-pill">Reporting</span>
@@ -611,8 +729,5 @@
   <span>Business Development · Sales Management · SaaS</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Scroll reveal for experience items
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-  
+<script>
+</script>
