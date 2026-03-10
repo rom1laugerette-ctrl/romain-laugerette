@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romain Laugerette — Business Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f8f6f2;
+    --accent: #1a56db;
+    --accent2: #60a5fa;
+    --mid: #6b6b6b;
+    --light: #ededea;
+    --card: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(248,246,242,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none; color: var(--mid);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding: 0 4rem; padding-top: 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding-right: 4rem; padding-top: 2rem;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--light); border-radius: 2rem;
+    padding: 0.4rem 1rem; font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--mid);
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800; line-height: 1.0;
+    letter-spacing: -0.03em;
+    opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: 1.1rem; font-weight: 300;
+    color: var(--mid); line-height: 1.7; max-width: 480px;
+    opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; margin-top: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+  }
+  .btn-primary {
+    background: var(--accent); color: white;
+    padding: 0.85rem 2rem; border-radius: 0.4rem;
+    text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,86,219,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,86,219,0.4); }
+  .btn-secondary {
+    background: transparent; color: var(--black);
+    padding: 0.85rem 2rem; border-radius: 0.4rem;
+    text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--black); }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    opacity: 0; animation: fadeIn 1s 0.5s forwards;
+  }
+  .hero-card {
+    background: var(--card);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    width: 100%; max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 1.6rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    z-index: -1; opacity: 0.15;
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat {
+    padding: 1.2rem;
+    background: var(--light); border-radius: 1rem;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 0.78rem; color: var(--mid); margin-top: 0.2rem; }
+  .hero-divider { height: 1px; background: var(--light); margin: 1.5rem 0; }
+  .hero-card-footer { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+  .hero-card-footer strong { color: var(--black); }
+
+  /* DECO */
+  .deco-circle {
+    position: absolute; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    opacity: 0.07; z-index: -1;
+  }
+  .deco-1 { width: 500px; height: 500px; top: -100px; right: -100px; }
+  .deco-2 { width: 200px; height: 200px; bottom: 10%; left: 5%; }
+
+  /* SECTIONS COMMON */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.1; margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--black); color: var(--white); }
+  #about .section-label { color: var(--accent2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-text { font-size: 1.1rem; line-height: 1.85; font-weight: 300; color: rgba(255,255,255,0.8); }
+  .about-text strong { color: var(--white); font-weight: 500; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+  .highlight {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.3rem 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 0.8rem;
+    border-left: 3px solid var(--accent);
+  }
+  .highlight-icon { font-size: 1.5rem; }
+  .highlight-text { font-size: 0.9rem; line-height: 1.5; color: rgba(255,255,255,0.75); }
+  .highlight-text strong { color: white; display: block; margin-bottom: 0.2rem; }
+
+  /* EXPERIENCES */
+  #experience { background: var(--white); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 3rem; padding: 2.5rem 0;
+    border-bottom: 1px solid var(--light);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .exp-item.visible { opacity: 1; transform: none; }
+  .exp-date { font-size: 0.85rem; color: var(--mid); padding-top: 0.2rem; }
+  .exp-date span {
+    display: inline-block; background: var(--light);
+    padding: 0.3rem 0.8rem; border-radius: 2rem;
+    font-size: 0.75rem; margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .exp-role { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.8rem; }
+  .exp-desc { font-size: 0.92rem; color: var(--mid); line-height: 1.7; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .tag {
+    background: var(--light); color: var(--black);
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+    padding: 0.3rem 0.8rem; border-radius: 2rem;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--light); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-card {
+    background: white; border-radius: 1rem; padding: 2rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .skill-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .skill-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem;
+  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-pill {
+    font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 2rem;
+    background: var(--light); color: var(--mid);
+  }
+  .skill-pill.accent { background: rgba(232,65,10,0.1); color: var(--accent); }
+
+  /* CONTACT */
+  #contact { background: var(--black); color: white; }
+  #contact .section-label { color: var(--accent2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-intro { font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.7); }
+  .contact-intro strong { color: white; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0.8rem; text-decoration: none; color: white;
+    transition: background 0.2s, transform 0.2s;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+  .contact-link-icon { font-size: 1.2rem; width: 2.5rem; text-align: center; }
+  .contact-link-text { font-size: 0.9rem; }
+  .contact-link-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .availability-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(245,166,35,0.15); color: var(--accent2);
+    padding: 0.7rem 1.3rem; border-radius: 2rem;
+    font-size: 0.82rem; font-weight: 500;
+    border: 1px solid rgba(245,166,35,0.3);
+    margin-bottom: 1.5rem;
+  }
+  .availability-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050505; color: rgba(255,255,255,0.3);
+    padding: 2rem 4rem; display: flex;
+    justify-content: space-between; align-items: center;
+    font-size: 0.8rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-left { padding-right: 0; }
+    .hero-right { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RL<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#experience">Expériences</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="deco-circle deco-1"></div>
+  <div class="deco-circle deco-2"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Business Development · Sales Management</div>
+    <h1>Romain<br><em>Laugerette</em></h1>
+    <p class="hero-subtitle">
+      Expert en <strong>développement commercial</strong> et management des ventes — 15+ ans à construire, structurer et scaler des équipes et des marchés.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Me contacter</a>
+      <a href="#experience" class="btn-secondary">Voir le parcours</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Années d'expérience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Sociétés fondées</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Cessions réalisées</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">B2B</div>
+          <div class="stat-label">Focus SaaS / SIRH</div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-card-footer">
+        <strong>Basé à Lisbonne</strong>, relocalisations envisagées à<br>
+        <strong>Montpellier</strong> ou <strong>Lyon</strong> · Disponible dès juin 2026
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">À propos</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="section-title" style="color:white">Un profil qui<br>va au-delà du CV.</h2>
+      <p class="about-text">
+        Après deux aventures entrepreneuriales et plusieurs années à diriger des équipes commerciales dans des environnements exigeants, j'ai une conviction : <strong>ce qui fait la différence, c'est la capacité à transformer une vision en résultats concrets.</strong>
+        <br><br>
+        J'ai fondé, développé et cédé deux sociétés. Aujourd'hui, je mets cette énergie au service de structures qui ont déjà les ressources pour aller loin — et qui cherchent quelqu'un pour accélérer.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight">
+        <div class="highlight-icon">🎯</div>
+        <div class="highlight-text">
+          <strong>Pilotage de la performance</strong>
+          KPIs, CRM, pipeline — je structure et je suis les résultats avec rigueur.
+        </div>
+      </div>
+      <div class="highlight">
+        <div class="highlight-icon">🚀</div>
+        <div class="highlight-text">
+          <strong>Développement de marchés</strong>
+          Prospection, négociation, closing — de la stratégie à l'exécution terrain.
+        </div>
+      </div>
+      <div class="highlight">
+        <div class="highlight-icon">👥</div>
+        <div class="highlight-text">
+          <strong>Management d'équipes</strong>
+          Recrutement, formation, montée en compétences et motivation sur la durée.
+        </div>
+      </div>
+      <div class="highlight">
+        <div class="highlight-icon">🧠</div>
+        <div class="highlight-text">
+          <strong>Vision entrepreneur</strong>
+          Fondateur de deux sociétés — je comprends les enjeux business de l'intérieur.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Parcours</div>
+  <h2 class="section-title">Expériences<br>professionnelles</h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-date">
+        <span>2021 — 2026</span><br>Directeur Commercial
+      </div>
+      <div>
+        <div class="exp-company">KAMMI by Kéméo</div>
+        <div class="exp-role">Directeur Commercial · Solution SIRH</div>
+        <div class="exp-desc">Pilotage de la stratégie commerciale d'une solution SIRH SaaS. Management de l'équipe de vente, structuration du pipeline, développement du portefeuille clients et gestion de la relation grands comptes.</div>
+        <div class="exp-tags">
+          <span class="tag">SaaS</span><span class="tag">SIRH</span><span class="tag">Management</span><span class="tag">B2B</span><span class="tag">HubSpot</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">
+        <span>2018 — 2021</span><br>Fondateur
+      </div>
+      <div>
+        <div class="exp-company">Green Swallow CBD</div>
+        <div class="exp-role">Fondateur · Réseau de franchise CBD</div>
+        <div class="exp-desc">Création et développement d'un réseau de franchise dans le secteur du CBD. Structuration du concept, recrutement des franchisés, accompagnement opérationnel et commercial. Cession réussie de la société.</div>
+        <div class="exp-tags">
+          <span class="tag">Franchise</span><span class="tag">Retail</span><span class="tag">Création d'entreprise</span><span class="tag">Cession</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">
+        <span>2012 — 2018</span><br>Fondateur
+      </div>
+      <div>
+        <div class="exp-company">Eufonie</div>
+        <div class="exp-role">Fondateur · 6 ans d'entrepreneuriat</div>
+        <div class="exp-desc">Fondation et développement de la société Eufonie sur 6 ans, jusqu'à la cession. Gestion complète : développement commercial, management, relation clients et partenaires.</div>
+        <div class="exp-tags">
+          <span class="tag">Entrepreneuriat</span><span class="tag">Gestion</span><span class="tag">Cession</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">
+        <span>2006 — 2012</span><br>Manager
+      </div>
+      <div>
+        <div class="exp-company">Meetic</div>
+        <div class="exp-role">Offshore Provider Manager</div>
+        <div class="exp-desc">Gestion des prestataires offshore pour l'un des leaders européens de la rencontre en ligne. Pilotage de la performance, coordination des équipes externalisées et suivi des KPIs opérationnels.</div>
+        <div class="exp-tags">
+          <span class="tag">Gestion prestataires</span><span class="tag">KPIs</span><span class="tag">Offshore</span><span class="tag">Scale-up</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">
+        <span>2004 — 2006</span><br>Commercial
+      </div>
+      <div>
+        <div class="exp-company">Avéa Immobilier</div>
+        <div class="exp-role">Agent Immobilier</div>
+        <div class="exp-desc">Négociation et vente de biens immobiliers, gestion du portefeuille clients, prospection et accompagnement acheteurs/vendeurs tout au long du processus de transaction.</div>
+        <div class="exp-tags">
+          <span class="tag">Vente</span><span class="tag">Négociation</span><span class="tag">Immobilier</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Compétences</div>
+  <h2 class="section-title">Ce que j'apporte<br>à votre équipe.</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">📊</div>
+      <div class="skill-card-title">Vente & Négociation</div>
+      <div class="skill-items">
+        <span class="skill-pill accent">Closing B2B</span>
+        <span class="skill-pill accent">Négociation grands comptes</span>
+        <span class="skill-pill">Prospection</span>
+        <span class="skill-pill">Portefeuille clients</span>
+        <span class="skill-pill">Cycle de vente long</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">👥</div>
+      <div class="skill-card-title">Management & Leadership</div>
+      <div class="skill-items">
+        <span class="skill-pill accent">Management d'équipes</span>
+        <span class="skill-pill accent">Leadership</span>
+        <span class="skill-pill">Recrutement</span>
+        <span class="skill-pill">Formation</span>
+        <span class="skill-pill">Motivation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <div class="skill-card-title">Outils & Méthodes</div>
+      <div class="skill-items">
+        <span class="skill-pill accent">HubSpot</span>
+        <span class="skill-pill accent">Pipedrive</span>
+        <span class="skill-pill">Analyse KPIs</span>
+        <span class="skill-pill">CRM</span>
+        <span class="skill-pill">Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🚀</div>
+      <div class="skill-card-title">Développement Business</div>
+      <div class="skill-items">
+        <span class="skill-pill accent">Stratégie commerciale</span>
+        <span class="skill-pill accent">Go-to-market</span>
+        <span class="skill-pill">Partenariats</span>
+        <span class="skill-pill">Expansion</span>
+        <span class="skill-pill">SaaS / SIRH</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🌍</div>
+      <div class="skill-card-title">Langues</div>
+      <div class="skill-items">
+        <span class="skill-pill accent">Français — natif</span>
+        <span class="skill-pill">Anglais — B1/B2</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🏆</div>
+      <div class="skill-card-title">Atouts entrepreneur</div>
+      <div class="skill-items">
+        <span class="skill-pill accent">2 sociétés créées</span>
+        <span class="skill-pill accent">2 cessions réalisées</span>
+        <span class="skill-pill">Vision P&L</span>
+        <span class="skill-pill">Prise de décision</span>
+        <span class="skill-pill">Résilience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="contact-grid">
+    <div>
+      <h2 class="section-title" style="color:white">Entrons en<br>contact.</h2>
+      <p class="contact-intro">
+        Je suis <strong>activement à l'écoute d'opportunités</strong> dans le secteur SaaS / SIRH / Tech RH, idéalement à <strong>Montpellier ou Lyon</strong>.
+        <br><br>
+        N'hésitez pas à me contacter directement — je réponds sous 24h.
+      </p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#9ae8f5f7abf6fbeffdffe8ffeeeeffdafdf7fbf3f6b4f9f5f7" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-text"><span class="__cf_email__" data-cfemail="4c3e23217d202d392b293e293838290c2b212d2520622f2321">[email&#160;protected]</span></div>
+          </div>
+        </a>
+        <a href="tel:+33666272106" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          <div>
+            <div class="contact-link-label">Téléphone</div>
+            <div class="contact-link-text">+33 6 66 27 21 06</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/romain-laugerette-65473834" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-text">romain-laugerette-65473834</div>
+          </div>
+        </a>
+        <div class="contact-link" style="cursor:default">
+          <div class="contact-link-icon">📍</div>
+          <div>
+            <div class="contact-link-label">Localisation</div>
+            <div class="contact-link-text">Lisbonne → Montpellier / Lyon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Romain Laugerette</span>
+  <span>Business Development · Sales Management · SaaS</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal for experience items
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+  
